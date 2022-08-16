@@ -30,6 +30,35 @@
 						<label for="email">Email</label>
 						<input type="text" class="form-control" id="email" name="email" value="<?=$peserta->email?>">
 					</div>
+					
+					<?php
+						if ($peserta->gender == "L") {
+							$checked1 = "checked";
+							$checked2 = "";
+						} else {
+							$checked1 = "";
+							$checked2 = "checked";
+						}
+					?>
+
+					<div class="form-group">
+						<label for="email">Gender</label>
+						<div class="form-check">
+						  <input class="form-check-input" type="radio" name="gender" id="gender1" value="L" <?=$checked1?>>
+						  <label class="form-check-label" for="gender1">
+						    Laki-laki
+						  </label>
+						</div>
+
+						<div class="form-check">
+						  <input class="form-check-input" type="radio" name="gender" id="gender2" value="P" <?=$checked2?>>
+						  <label class="form-check-label" for="gender2">
+						    Perempuan
+						  </label>
+						</div>
+						    
+					</div>
+
 					<div class="form-group">
 						<input type="submit" class="btn btn-primary" value="Simpan">
 					</div>

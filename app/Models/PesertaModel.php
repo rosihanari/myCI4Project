@@ -9,7 +9,7 @@ class PesertaModel extends Model {
 	protected $returnType = 'object';
 	protected $useTimeStamps = true;
 	protected $allowedFields = [
-		'name', 'email'
+		'name', 'email', 'gender', 'updated_at'
 	];
 }
 

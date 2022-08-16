@@ -48,6 +48,7 @@ $routes->get('/uns/(:any)', 'Home::uns/$1');
 $routes->get('/uns-inf', 'UNS::inf');
 $routes->get('/user', 'User\Manage::index');
 $routes->get('/prodi', 'Home::prodi');
+$routes->get('/gallery', 'Galeri::index');
 
 /*
  * --------------------------------------------------------------------

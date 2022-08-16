@@ -5,6 +5,7 @@
 		<div class="row">
 			<div class="col">
 				<h2>Data Peserta</h2>
+				<h4>Total Data Peserta: <?=$total?></h4>
 			</div>
 		</div>
 		<div class="row">

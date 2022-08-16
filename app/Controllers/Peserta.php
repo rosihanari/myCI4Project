@@ -12,6 +12,13 @@ class Peserta extends BaseController
 	}
 
     public function index(){
+
+        $db = db_connect();
+
+        $query = "SELECT hitung_peserta() as jum";
+        $res = $db->query($query);
+
+        $arr['total'] = $res->getResult()[0]->jum;
     	$arr['peserta'] = $this->peserta->findAll();
 
     	return view('Peserta/showtable', $arr); 
@@ -49,12 +56,29 @@ class Peserta extends BaseController
     		return redirect()->back()->withInput();
     	}
 
+        /*
+
+        // insert data dg query builder
+
     	$this->peserta->insert([
 
     		'name' => $this->request->getVar('name'),
     		'email' => $this->request->getVar('email')
 
     	]);
+        */
+
+        // insert data dengan procedure MySQL
+
+        $db = db_connect();
+        
+        $name = $this->request->getVar('name');
+        $email = $this->request->getVar('email');
+        $gender = $this->request->getVar('gender');
+
+        $query = "CALL insert_peserta('".$name."', '".$gender."', '".$email."')";
+
+        $db->query($query);
 
     	return redirect()->to('peserta');
     }
@@ -89,9 +113,12 @@ class Peserta extends BaseController
     	$this->peserta->update($id, [
 
     		'name' => $this->request->getVar('name'),
-    		'email' => $this->request->getVar('email')
+    		'email' => $this->request->getVar('email'),
+            'gender' => $this->request->getVar('gender'),
+            'updated_at' => date('Y-m-d H:i:s')
 
     	]);
+
 
     	return redirect()->to('peserta');
     }
